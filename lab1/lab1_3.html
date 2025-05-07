@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ввод числа</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        a:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ввод числа</h1>
+    <p>Нажмите на ссылку ниже, чтобы ввести число больше 100</p>
+    
+    <a href="index.html" id="numberLink">Получить число</a>
+
+    <script>
+        document.getElementById('numberLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            let number;
+            do {
+                number = prompt("Пожалуйста, введите число больше 100:", "");
+                
+                if (number === null) {
+                    const shouldProceed = confirm("Вы действительно хотите перейти без ввода числа?");
+                    if (shouldProceed) {
+                        window.location.href = this.href;
+                    }
+                    return;
+                }
+                
+                number = parseInt(number);
+            } while (isNaN(number) || number <= 100);
+            
+            window.location.href = this.href;
+        });
+    </script>
+</body>
+</html>
