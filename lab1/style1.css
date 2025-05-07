@@ -12,10 +12,12 @@ form {
 label {
     display: block;
     margin-bottom: 5px;
+    font-weight: bold;
 }
-input, textarea, button {
+input[type="number"], textarea {
+    width: 100%;
     padding: 8px;
-    font-size: 16px;
+    box-sizing: border-box;
 }
 .radio-group {
     display: flex;
@@ -27,11 +29,17 @@ input, textarea, button {
     gap: 5px;
 }
 button {
-    background-color: #3ba573;
+    padding: 10px 15px;
+    background-color: #4CAF50;
     color: white;
     border: none;
     cursor: pointer;
+    font-size: 16px;
 }
 button:hover {
-    background-color: #29a165;
+    background-color: #45a049;
+}
+textarea {
+    height: 100px;
+    resize: none;
 }
