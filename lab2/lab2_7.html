@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <title>Сумма аргументов</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #1E3A8A;
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        input, button {
+            padding: 8px;
+            font-size: 16px;
+            margin: 5px 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        input {
+            border: 1px solid #60A5FA;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #BFDBFE;
+            color: #1E3A8A;
+            border: 1px solid #93C5FD;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #93C5FD;
+        }
+        #result {
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Сумма аргументов</h1>
+    <input type="text" id="argsInput" placeholder="Введите числа через запятую">
+    <button onclick="calculateSum()">Вычислить сумму</button>
+    <p id="result"></p>
+
+    <script>
+        function sum(...args) {
+            return args.reduce((acc, val) => acc + val, 0);
+        }
+
+        function calculateSum() {
+            const input = document.getElementById('argsInput').value;
+            const numbers = input.split(',').map(n => parseFloat(n.trim())).filter(n => !isNaN(n));
+            const result = sum(...numbers);
+            document.getElementById('result').textContent = `Сумма: ${result}`;
+        }
+    </script>
+</body>
+</html>
