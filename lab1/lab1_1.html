@@ -2,7 +2,6 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Пенсионный калькулятор</title>
     <style>
         body {
@@ -17,7 +16,6 @@
             gap: 15px;
         }
         label {
-            display: block;
             margin-bottom: 5px;
         }
         input, textarea, button {
@@ -49,7 +47,7 @@
     <form id="pensionForm">
         <div>
             <label for="age">Ваш возраст:</label>
-            <input type="number" id="age" name="age" required min="0">
+            <input type="number" id="age" name="age" required min="0" max="120">
         </div>
         
         <div>
@@ -66,7 +64,7 @@
             </div>
         </div>
         
-        <button type="button" id="calculateBtn">Рассчитать</button>
+        <button type="submit">Рассчитать</button>
         
         <div>
             <label for="result">Результат:</label>
@@ -75,39 +73,39 @@
     </form>
 
     <script>
-        document.getElementById('calculateBtn').addEventListener('click', function() {
+        document.getElementById('pensionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
             const age = parseInt(document.getElementById('age').value);
             const gender = document.querySelector('input[name="gender"]:checked')?.value;
             const result = document.getElementById('result');
-            
+
             if (isNaN(age) || !gender) {
                 result.value = "Пожалуйста, заполните все поля";
                 return;
             }
-            
+
             let message;
-            
             if (age >= 0 && age <= 17) {
                 message = "Вам работать ещё рано — учитесь";
             } else if (
-                (gender === 'male' && age >= 18 && age <= 59) ||
-                (gender === 'female' && age >= 18 && age <= 54)
+                (gender === 'male' && age <= 59) ||
+                (gender === 'female' && age <= 54)
             ) {
                 message = "Вам ещё работать и работать";
             } else if (
-                (gender === 'male' && age >= 60 && age <= 64) ||
-                (gender === 'female' && age >= 55 && age <= 59)
+                (gender === 'male' && age <= 64) ||
+                (gender === 'female' && age <= 59)
             ) {
                 message = "Скоро пенсия!";
             } else if (
-                (gender === 'male' && age >= 65 && age <= 110) ||
-                (gender === 'female' && age >= 60 && age <= 110)
+                (gender === 'male' && age >= 65) ||
+                (gender === 'female' && age >= 60)
             ) {
                 message = "Вам пора на пенсию";
             } else {
                 message = "Да кто ты такой?";
             }
-            
+
             result.value = message;
         });
     </script>

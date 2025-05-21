@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Простые числа</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        input, button {
+            padding: 8px;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+        #result {
+            white-space: pre-wrap;
+            text-align: left;
+            border: 1px solid #ccc;
+            padding: 10px;
+            min-height: 100px;
+            max-height: 300px;
+            overflow-y: auto;
+            background: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Простые числа</h1>
+    <p>Введите число n и нажмите «Найти», чтобы увидеть все простые числа от 2 до n.</p>
+
+    <input type="number" id="inputN" min="2" placeholder="Введите число больше или равно 2" required />
+    <br />
+    <button id="findBtn">Найти</button>
+
+    <div id="result"></div>
+
+    <script>
+        // Функция проверки, простое ли число
+        function isPrime(num) {
+            if (num < 2) return false;
+            for (let i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i === 0) return false;
+            }
+            return true;
+        }
+
+        document.getElementById('findBtn').addEventListener('click', () => {
+            const n = parseInt(document.getElementById('inputN').value);
+            const resultDiv = document.getElementById('result');
+            resultDiv.textContent = ''; // Очистить результат
+
+            if (isNaN(n) || n < 2) {
+                resultDiv.textContent = 'Пожалуйста, введите число, большее или равное 2.';
+                return;
+            }
+
+            const primes = [];
+            for (let i = 2; i <= n; i++) {
+                if (isPrime(i)) primes.push(i);
+            }
+
+            if (primes.length === 0) {
+                resultDiv.textContent = 'Простых чисел не найдено.';
+            } else {
+                resultDiv.textContent = 'Простые числа:\n' + primes.join(', ');
+            }
+        });
+    </script>
+</body>
+</html>
