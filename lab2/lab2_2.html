@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <title>Сумма чисел от 1 до n</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #1E3A8A;
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        input, button {
+            padding: 8px;
+            font-size: 16px;
+            margin: 5px 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        input {
+            border: 1px solid #60A5FA;
+            border-radius: 4px;
+            outline: none;
+        }
+        input:focus {
+            border-color: #3B82F6;
+            box-shadow: 0 0 4px rgba(59, 130, 246, 0.5);
+        }
+        button {
+            cursor: pointer;
+            background-color: #BFDBFE;
+            color: #1E3A8A;
+            border: 1px solid #93C5FD;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #93C5FD;
+        }
+        p#result {
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 18px;
+            min-height: 24px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Сумма чисел от 1 до n</h1>
+    <input type="number" id="num" placeholder="Введите натуральное число n" min="1" />
+    <button onclick="calculateSum()">Вычислить</button>
+    <p id="result"></p>
+
+    <script>
+        const sumTo = new Function('n', `
+            let sum = 0;
+            for (let i = 1; i <= n; i++) {
+                sum += i;
+            }
+            return sum;
+        `);
+
+        function calculateSum() {
+            const n = parseInt(document.getElementById('num').value);
+            const resultElem = document.getElementById('result');
+
+            if (isNaN(n) || n < 1) {
+                resultElem.textContent = "Введите натуральное число больше или равное 1.";
+                return;
+            }
+
+            const result = sumTo(n);
+            resultElem.textContent = `Сумма чисел от 1 до ${n} равна ${result}.`;
+        }
+    </script>
+</body>
+</html>
