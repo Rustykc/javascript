@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Проверка на спам</title>
+    <title>Нормализация URL</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -54,20 +54,19 @@
     </style>
 </head>
 <body>
-    <h1>Проверка на спам</h1>
-    <input type="text" id="text" placeholder="Введите строку" />
-    <button onclick="check()">Проверить</button>
+    <h1>Нормализация URL</h1>
+    <input type="text" id="url" placeholder="Введите адрес сайта" />
+    <button onclick="normalize()">Нормализовать</button>
     <p id="result"></p>
 
     <script>
         
-function checkSpam(str) {
-    const s = str.toLowerCase();
-    return s.includes('viagra') || s.includes('xxx');
+function normalizeUrl(url) {
+    return 'https://' + url.replace(/^https?:\/\//, '');
 }
-function check() {
-    const text = document.getElementById('text').value;
-    document.getElementById('result').textContent = checkSpam(text);
+function normalize() {
+    const url = document.getElementById('url').value;
+    document.getElementById('result').textContent = normalizeUrl(url);
 }
         
     </script>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Проверка на спам</title>
+    <title>Числа Фибоначчи</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -54,20 +54,25 @@
     </style>
 </head>
 <body>
-    <h1>Проверка на спам</h1>
-    <input type="text" id="text" placeholder="Введите строку" />
-    <button onclick="check()">Проверить</button>
+    <h1>Числа Фибоначчи</h1>
+    <input type="number" id="n" placeholder="Введите n" />
+    <button onclick="showFibs()">Показать</button>
     <p id="result"></p>
 
     <script>
         
-function checkSpam(str) {
-    const s = str.toLowerCase();
-    return s.includes('viagra') || s.includes('xxx');
+function fibs(n) {
+    const result = [];
+    let a = 0n, b = 1n;
+    for (let i = 0; i < n; i++) {
+        result.push(a);
+        [a, b] = [b, a + b];
+    }
+    return result;
 }
-function check() {
-    const text = document.getElementById('text').value;
-    document.getElementById('result').textContent = checkSpam(text);
+function showFibs() {
+    const n = parseInt(document.getElementById('n').value);
+    document.getElementById('result').textContent = isNaN(n) ? 'Введите корректное число.' : fibs(n).join(', ');
 }
         
     </script>

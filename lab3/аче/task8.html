@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Проверка на спам</title>
+    <title>Уникальные значения</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -54,20 +54,19 @@
     </style>
 </head>
 <body>
-    <h1>Проверка на спам</h1>
-    <input type="text" id="text" placeholder="Введите строку" />
-    <button onclick="check()">Проверить</button>
+    <h1>Уникальные значения</h1>
+    <input type="text" id="arr" placeholder="Введите значения через запятую" />
+    <button onclick="getUnique()">Получить уникальные</button>
     <p id="result"></p>
 
     <script>
         
-function checkSpam(str) {
-    const s = str.toLowerCase();
-    return s.includes('viagra') || s.includes('xxx');
+function unique(arr) {
+    return [...new Set(arr)];
 }
-function check() {
-    const text = document.getElementById('text').value;
-    document.getElementById('result').textContent = checkSpam(text);
+function getUnique() {
+    const arr = document.getElementById('arr').value.split(',');
+    document.getElementById('result').textContent = unique(arr).join(', ');
 }
         
     </script>
