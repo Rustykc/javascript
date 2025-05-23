@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Проверка на спам</title>
+</head>
+<body>
+  <h2>Проверка на спам</h2>
+  <input type="text" id="spamInput" placeholder="Введите строку" />
+  <button onclick="check()">Проверить</button>
+  <div id="spamResult"></div>
+
+  <script>
+    function checkSpam(str) {
+      str = str.toLowerCase();
+      return str.includes('viagra') || str.includes('xxx');
+    }
+    function check() {
+      const str = document.getElementById('spamInput').value;
+      document.getElementById('spamResult').textContent = checkSpam(str);
+    }
+  </script>
+</body>
+</html>

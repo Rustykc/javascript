@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Camelize</title>
+</head>
+<body>
+  <h2>Преобразование в camelCase</h2>
+  <input type="text" id="camelInput" placeholder="var-test-text" />
+  <button onclick="camelizeStr()">Преобразовать</button>
+  <div id="camelResult"></div>
+
+  <script>
+    function ucFirst(str) {
+      return str[0].toUpperCase() + str.slice(1);
+    }
+    function camelize(str) {
+      return str.split('-').map((w, i) => i === 0 ? w : ucFirst(w)).join('');
+    }
+    function camelizeStr() {
+      const str = document.getElementById('camelInput').value;
+      document.getElementById('camelResult').textContent = camelize(str);
+    }
+  </script>
+</body>
+</html>

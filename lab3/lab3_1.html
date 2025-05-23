@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Дробная часть</title>
+</head>
+<body>
+  <h2>Дробная часть числа</h2>
+  <input type="number" id="decimalInput" step="any" placeholder="Введите число" />
+  <button onclick="showDecimal()">Вычислить</button>
+  <div id="decimalResult"></div>
+
+  <script>
+    function getDecimal(num) {
+      return (num - Math.floor(num) + (num < 0 ? 1 : 0)) % 1;
+    }
+    function showDecimal() {
+      const val = parseFloat(document.getElementById('decimalInput').value);
+      document.getElementById('decimalResult').textContent = getDecimal(val);
+    }
+  </script>
+</body>
+</html>

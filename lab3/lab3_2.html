@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Нормализация URL</title>
+</head>
+<body>
+  <h2>Нормализация URL</h2>
+  <input type="text" id="urlInput" placeholder="Введите URL" />
+  <button onclick="normalize()">Нормализовать</button>
+  <div id="urlResult"></div>
+
+  <script>
+    function normalizeUrl(url) {
+      return 'https://' + url.replace(/^https?:\/\//, '');
+    }
+    function normalize() {
+      const url = document.getElementById('urlInput').value;
+      document.getElementById('urlResult').textContent = normalizeUrl(url);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Уникальные значения</title>
+</head>
+<body>
+  <h2>Уникальные значения массива</h2>
+  <input type="text" id="uniqueInput" placeholder="a, b, b, c" />
+  <button onclick="uniqueValues()">Получить</button>
+  <div id="uniqueResult"></div>
+
+  <script>
+    function unique(arr) {
+      return [...new Set(arr)];
+    }
+    function uniqueValues() {
+      const input = document.getElementById('uniqueInput').value;
+      const arr = input.split(',').map(item => item.trim());
+      document.getElementById('uniqueResult').textContent = unique(arr).join(', ');
+    }
+  </script>
+</body>
+</html>

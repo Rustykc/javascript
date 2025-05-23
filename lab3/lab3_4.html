@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Усечение строки</title>
+</head>
+<body>
+  <h2>Усечение строки</h2>
+  <input type="text" id="truncateStr" placeholder="Строка" />
+  <input type="number" id="truncateLen" placeholder="Макс. длина" />
+  <button onclick="truncateStr()">Усечь</button>
+  <div id="truncateResult"></div>
+
+  <script>
+    function truncate(str, maxlength) {
+      return str.length > maxlength ? str.slice(0, maxlength - 1) + '…' : str;
+    }
+    function truncateStr() {
+      const str = document.getElementById('truncateStr').value;
+      const len = parseInt(document.getElementById('truncateLen').value);
+      document.getElementById('truncateResult').textContent = truncate(str, len);
+    }
+  </script>
+</body>
+</html>

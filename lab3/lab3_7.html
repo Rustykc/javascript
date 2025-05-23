@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Сортировка по убыванию</title>
+</head>
+<body>
+  <h2>Сортировка по убыванию</h2>
+  <input type="text" id="sortInput" placeholder="1, 3, 22" />
+  <button onclick="sortDesc()">Сортировать</button>
+  <div id="sortResult"></div>
+
+  <script>
+    function arrReverseSorted(arr) {
+      return [...arr].sort((a, b) => b - a);
+    }
+    function sortDesc() {
+      const input = document.getElementById('sortInput').value;
+      const arr = input.split(',').map(Number);
+      document.getElementById('sortResult').textContent = arrReverseSorted(arr).join(', ');
+    }
+  </script>
+</body>
+</html>

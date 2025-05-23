@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Фибоначчи</title>
+</head>
+<body>
+  <h2>Числа Фибоначчи</h2>
+  <input type="number" id="fibInput" placeholder="Введите n" />
+  <button onclick="fibsArray()">Получить</button>
+  <div id="fibResult"></div>
+
+  <script>
+    function fibs(n) {
+      const result = [];
+      let a = 0n, b = 1n;
+      for (let i = 0; i < n; i++) {
+        result.push(a);
+        [a, b] = [b, a + b];
+      }
+      return result;
+    }
+    function fibsArray() {
+      const n = parseInt(document.getElementById('fibInput').value);
+      document.getElementById('fibResult').textContent = fibs(n).join(', ');
+    }
+  </script>
+</body>
+</html>
