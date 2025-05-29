@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Показать/Скрыть текст</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    color: #1E3A8A;
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 20px;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  button {
+    padding: 8px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #93C5FD;
+    border-radius: 5px;
+    background-color: #BFDBFE;
+    color: #1E3A8A;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  button:hover {
+    background-color: #93C5FD;
+  }
+  #text {
+    margin-bottom: 15px;
+    font-size: 18px;
+  }
+</style>
+</head>
+<body>
+<h1>Показать/Скрыть текст</h1>
+<div id="text">Это какой-то текст, который можно скрыть.</div>
+<button id="toggleBtn">Скрыть текст</button>
+
+<script>
+  const textElem = document.getElementById('text');
+  const btn = document.getElementById('toggleBtn');
+
+  btn.addEventListener('click', () => {
+    if(textElem.style.display === 'none'){
+      textElem.style.display = '';
+      btn.textContent = 'Скрыть текст';
+    } else {
+      textElem.style.display = 'none';
+      btn.textContent = 'Показать текст';
+    }
+  });
+
+  btn.addEventListener('keyup', e => {
+    if(e.key === 'Enter' || e.key === ' '){
+      btn.click();
+    }
+  });
+</script>
+</body>
+</html>

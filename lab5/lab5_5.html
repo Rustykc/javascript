@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Скрытие сообщений</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    color: #1E3A8A;
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 20px;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  ul {
+    padding-left: 0;
+    list-style-type: none;
+  }
+  li {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #BFDBFE;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  button {
+    padding: 5px 8px;
+    font-size: 14px;
+    border: 1px solid #93C5FD;
+    border-radius: 4px;
+    background-color: #E0F2FE;
+    color: #1E3A8A;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #93C5FD;
+    color: white;
+  }
+</style>
+</head>
+<body>
+<h1>Список сообщений</h1>
+<ul id="messages">
+  <li>Сообщение 1</li>
+  <li>Сообщение 2</li>
+  <li>Сообщение 3</li>
+</ul>
+
+<script>
+  document.querySelectorAll('#messages li').forEach(li => {
+    const btn = document.createElement('button');
+    btn.textContent = 'Скрыть';
+    btn.addEventListener('click', () => {
+      li.style.display = 'none';
+    });
+    li.appendChild(btn);
+  });
+</script>
+</body>
+</html>

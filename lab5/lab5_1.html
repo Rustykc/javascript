@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Шахматная доска</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    color: #1E3A8A;
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 20px;
+  }
+  table {
+    border-collapse: collapse;
+    margin: 0 auto;
+  }
+  td {
+    width: 40px;
+    height: 40px;
+  }
+</style>
+</head>
+<body>
+<h1>Шахматная доска</h1>
+<table id="chessboard" border="1" cellspacing="0" cellpadding="0">
+  <tbody>
+    <!-- 8 строк с 8 ячейками -->
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  </tbody>
+</table>
+
+<script>
+  const table = document.getElementById('chessboard');
+  for(let i=0; i<8; i++){
+    for(let j=0; j<8; j++){
+      const cell = table.rows[i].cells[j];
+      if((i + j) % 2 === 0){
+        cell.style.backgroundColor = '#ffce9e'; // светлое
+      } else {
+        cell.style.backgroundColor = '#d18b47'; // тёмное
+      }
+    }
+  }
+</script>
+</body>
+</html>

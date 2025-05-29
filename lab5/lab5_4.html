@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Раскрывающееся меню</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    color: #1E3A8A;
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 20px;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  li {
+    margin-bottom: 5px;
+  }
+  .title {
+    cursor: pointer;
+    user-select: none;
+    padding: 5px 10px;
+    background-color: #BFDBFE;
+    border-radius: 4px;
+    border: 1px solid #93C5FD;
+    transition: background-color 0.3s ease;
+  }
+  .title:hover {
+    background-color: #93C5FD;
+  }
+  .submenu {
+    margin-left: 20px;
+    display: none;
+  }
+</style>
+</head>
+<body>
+<h1>Раскрывающееся меню</h1>
+
+<ul id="menu">
+  <li>
+    <div class="title" tabindex="0">Пункт 1</div>
+    <ul class="submenu">
+      <li>Подпункт 1-1</li>
+      <li>Подпункт 1-2</li>
+    </ul>
+  </li>
+  <li>
+    <div class="title" tabindex="0">Пункт 2</div>
+    <ul class="submenu">
+      <li>Подпункт 2-1</li>
+      <li>Подпункт 2-2</li>
+    </ul>
+  </li>
+</ul>
+
+<script>
+  document.querySelectorAll('#menu .title').forEach(title => {
+    title.addEventListener('click', () => {
+      const submenu = title.nextElementSibling;
+      submenu.style.display = (submenu.style.display === 'block') ? 'none' : 'block';
+    });
+
+    title.addEventListener('keydown', e => {
+      if(e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        title.click();
+      }
+    });
+  });
+</script>
+</body>
+</html>
