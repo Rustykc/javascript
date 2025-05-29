@@ -9,9 +9,13 @@ function pow(x, n) {
     return result;
 }
 
-function sumTo(n) {
-    return n * (n + 1) / 2;
-}
+const sumTo = new Function('n', `
+    let sum = 0;
+    for (let i = 1; i <= n; i++) {
+        sum += i;
+    }
+    return sum;
+`);
 
 function isLeapYear(year) {
     return (year % 400 === 0) || (year % 100 !== 0 && year % 4 === 0);
