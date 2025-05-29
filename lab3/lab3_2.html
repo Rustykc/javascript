@@ -74,6 +74,12 @@
       const result = normalizeUrl(input);
       document.getElementById("result").textContent = result;
     });
+
+    inputField.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+      handleNormalize();
+    }
+  });
   </script>
 </body>
 </html>

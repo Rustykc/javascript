@@ -89,6 +89,12 @@
             const result = truncate(str, maxlength);
             resultEl.textContent = `'${result}'`;
         }
+
+        document.getElementById('inputCall').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                handleInput();
+            }
+        });
     </script>
 </body>
 </html>

@@ -61,20 +61,24 @@
 
     <script>
         
-function ucFirst(str) {
-    return str[0].toUpperCase() + str.slice(1);
-}
-function camelize(str) {
-    return str
-        .split('-')
-        .map((word, index) => index === 0 ? word : ucFirst(word))
-        .join('');
-}
-function camelizeText() {
-    const str = document.getElementById('str').value;
-    document.getElementById('result').textContent = camelize(str);
-}
-        
+        function ucFirst(str) {
+            return str[0].toUpperCase() + str.slice(1);
+        }
+        function camelize(str) {
+            return str
+                .split('-')
+                .map((word, index) => index === 0 ? word : ucFirst(word))
+                .join('');
+        }
+        function camelizeText() {
+            const str = document.getElementById('str').value;
+            document.getElementById('result').textContent = camelize(str);
+        }
+        document.getElementById('str').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                camelizeText();
+            }
+        });
     </script>
 </body>
 </html>

@@ -60,16 +60,21 @@
     <p id="result"></p>
 
     <script>
-        
-function getDecimal(num) {
-    return ((num % 1) + 1) % 1;
-}
-function showDecimal() {
-    const num = parseFloat(document.getElementById('num').value);
-    const result = isNaN(num) ? 'Введите корректное число.' : getDecimal(num).toString();
-    document.getElementById('result').textContent = result;
-}
-        
+        function getDecimal(num) {
+            return ((num % 1) + 1) % 1;
+        }
+
+        function showDecimal() {
+            const num = parseFloat(document.getElementById('num').value);
+            const result = isNaN(num) ? 'Введите корректное число.' : getDecimal(num).toString();
+            document.getElementById('result').textContent = result;
+        }
+
+        document.getElementById('num').addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                showDecimal();
+            }
+        });
     </script>
 </body>
 </html>

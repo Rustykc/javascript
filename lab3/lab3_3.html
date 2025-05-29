@@ -61,15 +61,19 @@
 
     <script>
         
-function checkSpam(str) {
-    const s = str.toLowerCase();
-    return s.includes('viagra') || s.includes('xxx');
-}
-function check() {
-    const text = document.getElementById('text').value;
-    document.getElementById('result').textContent = checkSpam(text);
-}
-        
+        function checkSpam(str) {
+            const s = str.toLowerCase();
+            return s.includes('viagra') || s.includes('xxx');
+        }
+        function check() {
+            const text = document.getElementById('text').value;
+            document.getElementById('result').textContent = checkSpam(text);
+        }
+        document.getElementById('text').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                check();
+            }
+        });
     </script>
 </body>
 </html>
