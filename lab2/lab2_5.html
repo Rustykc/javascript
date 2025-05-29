@@ -84,6 +84,13 @@
             const result = fib(n);
             resultElem.textContent = `fib(${n}) = ${result}`;
         }
+        
+        document.getElementById('numberInput').addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+            calculateFibonacci();
+        }
+});
+
     </script>
 </body>
 </html>

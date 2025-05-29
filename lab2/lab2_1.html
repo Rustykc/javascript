@@ -6,7 +6,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            color: #1E3A8A; /* насыщенный синий */
+            color: #1E3A8A;
             max-width: 500px;
             margin: 40px auto;
             padding: 20px;
@@ -23,7 +23,7 @@
             box-sizing: border-box;
         }
         input {
-            border: 1px solid #60A5FA; /* тонкая синяя обводка */
+            border: 1px solid #60A5FA;
             border-radius: 4px;
             outline: none;
         }
@@ -33,7 +33,7 @@
         }
         button {
             cursor: pointer;
-            background-color: #BFDBFE; /* голубая кнопка */
+            background-color: #BFDBFE;
             color: #1E3A8A;
             border: 1px solid #93C5FD;
             border-radius: 5px;
@@ -75,6 +75,14 @@
             const result = pow(x, n);
             resultElem.textContent = `${x} в степени ${n} = ${result}`;
         }
+
+        document.getElementById('base').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') calculatePow();
+        });
+
+        document.getElementById('exponent').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') calculatePow();
+        });
     </script>
 </body>
 </html>

@@ -77,6 +77,10 @@
             const result = sumTo(n);
             resultElem.textContent = `Сумма чисел от 1 до ${n} равна ${result}.`;
         }
+
+        document.getElementById('num').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') calculateSum();
+        });
     </script>
 </body>
 </html>

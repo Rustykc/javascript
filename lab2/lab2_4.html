@@ -76,6 +76,12 @@
             const result = factorial(n);
             resultElem.textContent = `${n}! = ${result}`;
         }
+
+        document.getElementById('numberInput').addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                calculateFactorial();
+            }
+        });
     </script>
 </body>
 </html>

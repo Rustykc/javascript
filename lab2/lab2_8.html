@@ -81,5 +81,11 @@
                 outputDiv.textContent = 'Ошибка: неверный JSON. Попробуй снова.';
             }
         }
+        
+        document.getElementById('jsonInput').addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                handleAdd();
+            }
+        });
     </script>
 </body>

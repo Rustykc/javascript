@@ -79,6 +79,18 @@
             const result = compare(x)(y);
             resultElem.textContent = `Результат сравнения: ${result}`;
         }
+
+        document.getElementById('xValue').addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                compareNumbers();
+            }
+        });
+        document.getElementById('yValue').addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                compareNumbers();
+            }
+        });
+
     </script>
 </body>
 </html>

@@ -1,45 +1,87 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <title>Добавление blackSpot</title>
-    <script src="lab2.js"></script>
+    <meta charset="UTF-8">
+    <title>Сумма чисел от 1 до n</title>
     <style>
         body {
-        font-family: Arial, sans-serif;
-        max-width: 500px;
-        margin: 0 auto;
-        padding: 20px;
+            font-family: Arial, sans-serif;
+            color: #1E3A8A;
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 20px;
         }
         h1 {
-        text-align: center;
-        }   
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        input, button {
+            padding: 8px;
+            font-size: 16px;
+            margin: 5px 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        input {
+            border: 1px solid #60A5FA;
+            border-radius: 4px;
+            outline: none;
+        }
+        input:focus {
+            border-color: #3B82F6;
+            box-shadow: 0 0 4px rgba(59, 130, 246, 0.5);
+        }
+        button {
+            cursor: pointer;
+            background-color: #BFDBFE;
+            color: #1E3A8A;
+            border: 1px solid #93C5FD;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #93C5FD;
+        }
+        p#result {
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 18px;
+            min-height: 24px;
+        }
     </style>
 </head>
 <body>
-    <h1>Добавление свойства blackSpot</h1>
-    <p>Введите свойства объекта в формате JSON:</p>
-    <input type="text" id="object" placeholder='{"name": "John", "age": 30}'>
-    <button onclick="addSpot()">Добавить blackSpot</button>
+    <h1>Сумма чисел от 1 до n</h1>
+    <input type="number" id="num" placeholder="Введите натуральное число n" min="1">
+    <button onclick="calculateSum()">Вычислить</button>
     <p id="result"></p>
 
     <script>
-        function addSpot() {
-            try {
-                const objInput = document.getElementById('object').value;
-                const obj = objInput ? JSON.parse(objInput) : {};
-                const resultObj = addBlackSpot(obj);
-                
-                let resultStr = '{';
-                for (const key in resultObj) {
-                    resultStr += `${key}: ${resultObj[key]}, `;
-                }
-                resultStr += `[Symbol.for("blackSpot")]: ${resultObj[Symbol.for("blackSpot")]}}`;
-                
-                document.getElementById('result').textContent = resultStr;
-            } catch (e) {
-                document.getElementById('result').textContent = 'Ошибка: введите корректный JSON';
+        const sumTo = new Function('n', `
+            let sum = 0;
+            for (let i = 1; i <= n; i++) {
+                sum += i;
             }
+            return sum;
+        `);
+
+        function calculateSum() {
+            const n = parseInt(document.getElementById('num').value);
+            const resultElem = document.getElementById('result');
+
+            if (isNaN(n) || n < 1) {
+                resultElem.textContent = "Введите натуральное число больше или равное 1.";
+                return;
+            }
+
+            const result = sumTo(n);
+            resultElem.textContent = `Сумма чисел от 1 до ${n} равна ${result}.`;
         }
+
+        // Обработка Enter
+        document.getElementById('num').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') calculateSum();
+        });
     </script>
 </body>
 </html>

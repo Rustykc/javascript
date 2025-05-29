@@ -60,6 +60,12 @@
             const result = sum(...numbers);
             document.getElementById('result').textContent = `Сумма: ${result}`;
         }
+
+        document.getElementById('argsInput').addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+            calculateSum();
+            }
+        });
     </script>
 </body>
 </html>

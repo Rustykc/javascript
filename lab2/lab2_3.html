@@ -76,6 +76,12 @@
                 resultElem.textContent = `${year} — не високосный год.`;
             }
         }
+
+        document.getElementById('yearInput').addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                checkLeapYear();
+            }
+        });
     </script>
 </body>
 </html>
