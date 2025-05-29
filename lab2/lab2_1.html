@@ -1,88 +1,24 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Возведение в степень</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            color: #1E3A8A;
-            max-width: 500px;
-            margin: 40px auto;
-            padding: 20px;
-        }
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        input, button {
-            padding: 8px;
-            font-size: 16px;
-            margin: 5px 0;
-            width: 100%;
-            box-sizing: border-box;
-        }
-        input {
-            border: 1px solid #60A5FA;
-            border-radius: 4px;
-            outline: none;
-        }
-        input:focus {
-            border-color: #3B82F6;
-            box-shadow: 0 0 4px rgba(59, 130, 246, 0.5);
-        }
-        button {
-            cursor: pointer;
-            background-color: #BFDBFE;
-            color: #1E3A8A;
-            border: 1px solid #93C5FD;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-        button:hover {
-            background-color: #93C5FD;
-        }
-        p#result {
-            margin-top: 15px;
-            font-weight: bold;
-            font-size: 18px;
-            min-height: 24px;
-        }
-    </style>
+    <title>Калькулятор степеней</title>
+    <script src="lab2_1.js"></script>
 </head>
 <body>
-    <h1>Возведение в степень</h1>
+    <h1>Калькулятор степеней</h1>
+    <p>Введите основание и показатель степени:</p>
     <input type="number" id="base" placeholder="Основание (x)">
-    <input type="number" id="exponent" placeholder="Показатель степени (n)">
+    <input type="number" id="exponent" placeholder="Показатель (n)">
     <button onclick="calculatePow()">Вычислить</button>
     <p id="result"></p>
 
     <script>
-        function pow(x, n) {
-            return n >= 0 ? x ** n : 1 / (x ** Math.abs(n));
-        }
-
         function calculatePow() {
             const x = parseFloat(document.getElementById('base').value);
             const n = parseInt(document.getElementById('exponent').value);
-            const resultElem = document.getElementById('result');
-
-            if (isNaN(x) || isNaN(n)) {
-                resultElem.textContent = "Введите корректные числовые значения.";
-                return;
-            }
-
             const result = pow(x, n);
-            resultElem.textContent = `${x} в степени ${n} = ${result}`;
+            document.getElementById('result').textContent = `${x}^${n} = ${result}`;
         }
-
-        document.getElementById('base').addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') calculatePow();
-        });
-
-        document.getElementById('exponent').addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') calculatePow();
-        });
     </script>
 </body>
 </html>

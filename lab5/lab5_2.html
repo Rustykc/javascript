@@ -1,64 +1,72 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Дерево из объекта</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    color: #1E3A8A;
-    max-width: 500px;
-    margin: 40px auto;
-    padding: 20px;
-  }
-  h1 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  ul {
-    list-style-type: disc;
-    margin-left: 20px;
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список из объекта</title>
+    <style>
+        li {
+            margin: 5px 0;
+        }
+    </style>
 </head>
+
 <body>
-<h1>Дерево из объекта</h1>
-<div id="container"></div>
+    <div id="container"></div>
 
-<script>
-  function createTree(container, data) {
-    const ul = document.createElement('ul');
-    for(let key in data){
-      const li = document.createElement('li');
-      li.textContent = key;
-      if(Object.keys(data[key]).length > 0){
-        createTree(li, data[key]);
-      }
-      ul.appendChild(li);
-    }
-    container.appendChild(ul);
-  }
+    <script>
+        'use strict';
 
-  let data = {
-    "Рыбы": {
-      "форель": {},
-      "лосось": {}
-    },
-    "Деревья": {
-      "Огромные": {
-        "секвойя": {},
-        "дуб": {}
-      },
-      "Цветковые": {
-        "яблоня": {},
-        "магнолия": {}
-      }
-    }
-  };
+        function createTree(container, data) {
 
-  const container = document.getElementById('container');
-  createTree(container, data);
-</script>
+            function createTreeDom(obj) {
+
+                if (!Object.keys(obj).length) 
+                    return null;
+
+                let ul = document.createElement('ul');
+                for (let key in obj) {
+                    let li = document.createElement('li');
+                    li.textContent = key;
+
+                    let childrenUl = createTreeDom(obj[key]);
+                    if (childrenUl)
+                        li.appendChild(childrenUl);
+
+                    ul.appendChild(li);
+                }
+
+                return ul;
+            }
+
+            container.innerHTML = '';
+            container.appendChild(createTreeDom(data));
+        }
+
+        let data = {
+            "Рыбы": {
+                "форель": {},
+                "лосось": {}
+            },
+            "Деревья": {
+                "Огромные": {
+                    "секвойя": {},
+                    "дуб": {}
+                },
+                "Цветковые": {
+                    "яблоня": {},
+                    "магнолия": {}
+                }
+            }
+        };
+
+        document.addEventListener("DOMContentLoaded", function () {
+            let container = document.getElementById('container');
+            createTree(container, data);
+        });
+
+    </script>
 </body>
+
 </html>
