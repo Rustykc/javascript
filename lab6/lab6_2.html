@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<title>2. Плейсхолдер</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  color: #1E3A8A;
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
+}
+input {
+  width: 100%;
+  border: 1px solid #60A5FA;
+  border-radius: 4px;
+  padding: 8px;
+  font-size: 16px;
+}
+input:focus {
+  border-color: #3B82F6;
+  box-shadow: 0 0 4px rgba(59, 130, 246, 0.5);
+}
+.placeholder {
+  color: #60A5FA;
+  position: absolute;
+  left: 10px;
+  top: 8px;
+  pointer-events: none;
+  transition: 0.2s;
+}
+</style>
+</head>
+<body>
+<h1>2. Плейсхолдер</h1>
+
+<div style="position: relative;">
+  <input id="placeholderInput" />
+  <label id="placeholderLabel" class="placeholder"></label>
+</div>
+
+<script>
+const input = document.getElementById('placeholderInput');
+const label = document.getElementById('placeholderLabel');
+const placeholderText = 'Введите текст';
+
+function showPlaceholder() {
+  if (!input.value && document.activeElement !== input) {
+    label.style.display = '';
+    label.textContent = placeholderText;
+    label.style.top = '8px';
+    label.style.fontSize = '16px';
+  }
+}
+
+function hidePlaceholder() {
+  label.style.display = 'none';
+}
+
+input.addEventListener('focus', () => {
+  if (!input.value) {
+    label.textContent = placeholderText;
+    label.style.top = '-15px';
+    label.style.fontSize = '12px';
+  }
+});
+
+input.addEventListener('blur', () => {
+  showPlaceholder();
+});
+
+input.addEventListener('input', () => {
+  if (input.value) {
+    hidePlaceholder();
+  } else {
+    showPlaceholder();
+  }
+});
+
+// Установить начальное состояние
+label.textContent = placeholderText;
+showPlaceholder();
+</script>
+</body>
+</html>

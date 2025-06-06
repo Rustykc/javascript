@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<title>4. Редактируемая таблица</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  color: #1E3A8A;
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+td {
+  border: 1px solid #60A5FA;
+  padding: 10px;
+}
+textarea {
+  resize: none;
+}
+</style>
+</head>
+<body>
+<h1>4. Редактируемая таблица</h1>
+
+<table id="editableTable">
+  <tr><td>Ячейка 1</td><td>Ячейка 2</td></tr>
+  <tr><td>Ячейка 3</td><td>Ячейка 4</td></tr>
+</table>
+
+<script>
+let table = document.getElementById('editableTable');
+let editingTd;
+table.addEventListener('click', e => {
+  let td = e.target.closest('td');
+  if (!td || editingTd) return;
+  editingTd = td;
+  let textarea = document.createElement('textarea');
+  textarea.value = td.innerHTML;
+  textarea.style.width = td.clientWidth + 'px';
+  textarea.style.height = td.clientHeight + 'px';
+  textarea.style.resize = 'none';
+  let okBtn = document.createElement('button');
+  okBtn.textContent = 'OK';
+  let cancelBtn = document.createElement('button');
+  cancelBtn.textContent = 'ОТМЕНА';
+  td.innerHTML = '';
+  td.append(textarea, okBtn, cancelBtn);
+  okBtn.onclick = () => {
+    td.innerHTML = textarea.value;
+    editingTd = null;
+  };
+  cancelBtn.onclick = () => {
+    td.innerHTML = textarea.defaultValue;
+    editingTd = null;
+  };
+});
+</script>
+</body>
+</html>
